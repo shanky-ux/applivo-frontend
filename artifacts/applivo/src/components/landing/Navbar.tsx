@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Zap, Menu, X, Download } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,13 +33,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <motion.a
           href="#"
-          className="flex items-center gap-2"
+          className="flex items-center"
           whileHover={{ scale: 1.03 }}
         >
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "#10B981" }}>
-            <Zap className="w-4 h-4 text-white fill-white" />
-          </div>
-          <span className="text-xl font-bold tracking-tight" style={{ color: "#C9D1D9" }}>Applivo</span>
+          <img
+            src="/applivo-logo.png"
+            alt="Applivo"
+            className="h-10 w-auto object-contain"
+          />
         </motion.a>
 
         <div className="hidden md:flex items-center gap-8">
