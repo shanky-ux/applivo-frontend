@@ -2,24 +2,22 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const LOG_LINES = [
-  { time: "06:00", icon: "🔍", text: "Scraping LinkedIn...", result: "52 jobs found", color: "text-blue-400" },
-  { time: "06:01", icon: "🔍", text: "Scraping Indeed...", result: "38 jobs found", color: "text-slate-400" },
-  { time: "06:02", icon: "🤖", text: "AI Scoring batch...", result: "GPT-4o-mini", color: "text-indigo-400" },
-  { time: "06:03", icon: "✓", text: "Match 94%", result: "ML Engineer @ Stripe", color: "text-green-400" },
-  { time: "06:03", icon: "✓", text: "Match 89%", result: "AI Engineer @ Notion", color: "text-green-400" },
-  { time: "06:04", icon: "📄", text: "Generating tailored resume...", result: "", color: "text-blue-400" },
-  { time: "06:05", icon: "✍️", text: "Writing cover letter...", result: "", color: "text-blue-400" },
-  { time: "06:06", icon: "🚀", text: "Applied!", result: "Stripe ML Engineer", color: "text-emerald-400", bold: true },
+  { time: "06:00", icon: "🔍", text: "Scraping LinkedIn...", result: "52 jobs found", color: "#10B981" },
+  { time: "06:01", icon: "🔍", text: "Scraping Indeed...", result: "38 jobs found", color: "#6E7681" },
+  { time: "06:02", icon: "🤖", text: "AI Scoring batch...", result: "GPT-4o-mini", color: "#34D399" },
+  { time: "06:03", icon: "✓", text: "Match 94%", result: "— ML Engineer @ Stripe", color: "#10B981" },
+  { time: "06:03", icon: "✓", text: "Match 89%", result: "— AI Engineer @ Notion", color: "#10B981" },
+  { time: "06:04", icon: "📄", text: "Generating tailored resume...", result: "", color: "#34D399" },
+  { time: "06:05", icon: "✍️", text: "Writing cover letter...", result: "", color: "#34D399" },
+  { time: "06:06", icon: "🚀", text: "Applied!", result: "— Stripe ML Engineer", color: "#10B981", bold: true },
 ];
 
 export default function Terminal() {
   const [visibleLines, setVisibleLines] = useState(0);
-  const [typing, setTyping] = useState(true);
 
   useEffect(() => {
     const cycle = () => {
       setVisibleLines(0);
-      setTyping(true);
       let i = 0;
       const addLine = () => {
         if (i < LOG_LINES.length) {
@@ -27,7 +25,6 @@ export default function Terminal() {
           i++;
           setTimeout(addLine, 600);
         } else {
-          setTyping(false);
           setTimeout(cycle, 4000);
         }
       };
@@ -43,22 +40,37 @@ export default function Terminal() {
       transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
       className="relative w-full max-w-md mx-auto"
     >
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 blur-2xl transform scale-105" />
-      <div className="relative bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
-        <div className="flex items-center gap-2 px-4 py-3 bg-slate-50 border-b border-slate-200">
+      <div
+        className="absolute inset-0 rounded-2xl blur-2xl transform scale-105"
+        style={{ background: "radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%)" }}
+      />
+      <div
+        className="relative rounded-2xl overflow-hidden"
+        style={{
+          background: "#010409",
+          border: "1px solid rgba(16,185,129,0.2)",
+          boxShadow: "0 0 40px rgba(16,185,129,0.08)",
+        }}
+      >
+        <div
+          className="flex items-center gap-2 px-4 py-3"
+          style={{ background: "#0D1117", borderBottom: "1px solid rgba(16,185,129,0.15)" }}
+        >
           <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-red-400" />
-            <div className="w-3 h-3 rounded-full bg-yellow-400" />
-            <div className="w-3 h-3 rounded-full bg-green-400" />
+            <div className="w-3 h-3 rounded-full bg-red-500" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+            <div className="w-3 h-3 rounded-full" style={{ background: "#10B981" }} />
           </div>
-          <span className="ml-2 text-xs text-slate-500 font-mono font-medium">applivo — agent running</span>
+          <span className="ml-2 text-xs font-mono font-medium" style={{ color: "#6E7681" }}>
+            applivo — agent running
+          </span>
           <div className="ml-auto flex items-center gap-1.5">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-xs text-green-600 font-medium">live</span>
+            <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#10B981" }} />
+            <span className="text-xs font-medium" style={{ color: "#10B981" }}>live</span>
           </div>
         </div>
 
-        <div className="p-4 font-mono text-xs space-y-1.5 min-h-[260px] bg-slate-950">
+        <div className="p-4 font-mono text-xs space-y-1.5 min-h-[260px]" style={{ background: "#010409" }}>
           <AnimatePresence mode="sync">
             {LOG_LINES.slice(0, visibleLines).map((line, idx) => (
               <motion.div
@@ -68,19 +80,21 @@ export default function Terminal() {
                 transition={{ duration: 0.25 }}
                 className={`flex gap-2 ${line.bold ? "font-bold" : ""}`}
               >
-                <span className="text-slate-500 shrink-0">[{line.time}]</span>
-                <span className={`${line.color} shrink-0`}>{line.icon}</span>
-                <span className={line.color}>{line.text}</span>
+                <span style={{ color: "#3d444d" }}>[{line.time}]</span>
+                <span style={{ color: line.color }}>{line.icon}</span>
+                <span style={{ color: line.color }}>{line.text}</span>
                 {line.result && (
-                  <span className={`${line.color} opacity-80`}>{line.result}</span>
+                  <span style={{ color: line.bold ? "#34D399" : "#6E7681" }}>{line.result}</span>
                 )}
               </motion.div>
             ))}
           </AnimatePresence>
           {visibleLines > 0 && (
             <div className="flex items-center gap-1 mt-1">
-              <span className="text-slate-500">[{LOG_LINES[Math.min(visibleLines - 1, LOG_LINES.length - 1)].time}]</span>
-              <span className="text-blue-400 cursor-blink">▋</span>
+              <span style={{ color: "#3d444d" }}>
+                [{LOG_LINES[Math.min(visibleLines - 1, LOG_LINES.length - 1)].time}]
+              </span>
+              <span className="cursor-blink" style={{ color: "#10B981" }}>▋</span>
             </div>
           )}
         </div>

@@ -40,19 +40,24 @@ function FAQItem({ faq, i }: { faq: typeof FAQS[0]; i: number }) {
       initial={{ opacity: 0, y: 16 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: i * 0.08, duration: 0.4 }}
-      className="border border-slate-200 rounded-xl overflow-hidden"
+      className="rounded-xl overflow-hidden"
+      style={{ border: "1px solid #21262d" }}
     >
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
+        className="w-full flex items-center justify-between p-5 text-left transition-colors"
+        style={{
+          background: open ? "rgba(16,185,129,0.04)" : "#161B22",
+          color: "#C9D1D9",
+        }}
       >
-        <span className="font-semibold text-slate-900 pr-4">{faq.q}</span>
+        <span className="font-semibold pr-4">{faq.q}</span>
         <motion.div
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="shrink-0 text-blue-600"
+          style={{ color: "#10B981" }}
         >
-          <ChevronDown className="w-5 h-5" />
+          <ChevronDown className="w-5 h-5 shrink-0" />
         </motion.div>
       </button>
       <AnimatePresence initial={false}>
@@ -63,8 +68,9 @@ function FAQItem({ faq, i }: { faq: typeof FAQS[0]; i: number }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 40 }}
             className="overflow-hidden"
+            style={{ background: "#0D1117", borderTop: "1px solid #21262d" }}
           >
-            <p className="px-5 pb-5 text-slate-500 leading-relaxed text-sm">{faq.a}</p>
+            <p className="px-5 pb-5 pt-4 leading-relaxed text-sm" style={{ color: "#8B949E" }}>{faq.a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -77,7 +83,7 @@ export default function FAQSection() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="faq" ref={ref} className="py-24 bg-slate-50">
+    <section id="faq" ref={ref} className="py-24" style={{ background: "#161B22" }}>
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -85,10 +91,10 @@ export default function FAQSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+          <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4" style={{ color: "#E6EDF3" }}>
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-slate-500">Everything you need to know about Applivo</p>
+          <p className="text-lg" style={{ color: "#8B949E" }}>Everything you need to know about Applivo</p>
         </motion.div>
 
         <div className="space-y-3">

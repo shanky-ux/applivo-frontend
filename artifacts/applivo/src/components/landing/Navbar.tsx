@@ -23,11 +23,11 @@ export default function Navbar() {
     <motion.nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled ? "rgba(255,255,255,0.92)" : "transparent",
+        background: scrolled ? "rgba(13,17,23,0.92)" : "transparent",
         backdropFilter: scrolled ? "blur(16px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(37,99,235,0.08)" : "none",
-        boxShadow: scrolled ? "0 1px 16px rgba(37,99,235,0.06)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(16,185,129,0.12)" : "none",
+        boxShadow: scrolled ? "0 1px 20px rgba(0,0,0,0.5)" : "none",
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -36,10 +36,10 @@ export default function Navbar() {
           className="flex items-center gap-2"
           whileHover={{ scale: 1.03 }}
         >
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "#10B981" }}>
             <Zap className="w-4 h-4 text-white fill-white" />
           </div>
-          <span className="text-xl font-bold text-slate-900 tracking-tight">Applivo</span>
+          <span className="text-xl font-bold tracking-tight" style={{ color: "#C9D1D9" }}>Applivo</span>
         </motion.a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -47,8 +47,9 @@ export default function Navbar() {
             <motion.a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
-              whileHover={{ y: -1 }}
+              className="text-sm font-medium transition-colors"
+              style={{ color: "#8B949E" }}
+              whileHover={{ y: -1, color: "#10B981" }}
             >
               {link.label}
             </motion.a>
@@ -58,8 +59,9 @@ export default function Navbar() {
         <div className="hidden md:flex items-center">
           <motion.a
             href="#download"
-            className="shimmer-btn flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold shadow-md hover:shadow-lg hover:bg-blue-700 transition-all"
-            whileHover={{ scale: 1.05 }}
+            className="shimmer-btn flex items-center gap-2 px-4 py-2 rounded-full text-white text-sm font-semibold shadow-md transition-all"
+            style={{ background: "#10B981" }}
+            whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
             whileTap={{ scale: 0.97 }}
           >
             <Download className="w-4 h-4" />
@@ -68,7 +70,8 @@ export default function Navbar() {
         </div>
 
         <button
-          className="md:hidden p-2 rounded-lg text-slate-600"
+          className="md:hidden p-2 rounded-lg"
+          style={{ color: "#8B949E" }}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -81,13 +84,15 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-slate-100 px-4 pb-4"
+            className="md:hidden px-4 pb-4"
+            style={{ background: "#161B22", borderTop: "1px solid #21262d" }}
           >
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="block py-3 text-sm font-medium text-slate-700 border-b border-slate-50 last:border-0"
+                className="block py-3 text-sm font-medium"
+                style={{ color: "#8B949E", borderBottom: "1px solid #21262d" }}
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -95,7 +100,8 @@ export default function Navbar() {
             ))}
             <a
               href="#download"
-              className="mt-3 flex items-center justify-center gap-2 py-2.5 rounded-full bg-blue-600 text-white text-sm font-semibold"
+              className="mt-3 flex items-center justify-center gap-2 py-2.5 rounded-full text-white text-sm font-semibold"
+              style={{ background: "#10B981" }}
               onClick={() => setMobileOpen(false)}
             >
               <Download className="w-4 h-4" /> Download Free

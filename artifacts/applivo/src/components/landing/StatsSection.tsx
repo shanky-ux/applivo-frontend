@@ -32,7 +32,7 @@ function AnimatedNumber({ target, suffix }: { target: number; suffix: string }) 
   }, [inView, target]);
 
   return (
-    <span ref={ref} className="text-5xl lg:text-6xl font-extrabold text-blue-600 tracking-tight">
+    <span ref={ref} className="text-5xl lg:text-6xl font-extrabold tracking-tight" style={{ color: "#10B981" }}>
       {count}
       {suffix}
     </span>
@@ -44,7 +44,7 @@ export default function StatsSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section ref={ref} className="py-16 bg-slate-50 border-y border-slate-100">
+    <section ref={ref} className="py-16" style={{ background: "#161B22", borderTop: "1px solid #21262d", borderBottom: "1px solid #21262d" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {STATS.map((stat, i) => (
@@ -56,10 +56,13 @@ export default function StatsSection() {
               className="flex flex-col items-center text-center px-4 relative"
             >
               {i < STATS.length - 1 && (
-                <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-12 bg-slate-200" />
+                <div
+                  className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-12"
+                  style={{ background: "#21262d" }}
+                />
               )}
               <AnimatedNumber target={stat.value} suffix={stat.suffix} />
-              <p className="mt-2 text-sm text-slate-500 font-medium">{stat.label}</p>
+              <p className="mt-2 text-sm font-medium" style={{ color: "#6E7681" }}>{stat.label}</p>
             </motion.div>
           ))}
         </div>

@@ -18,12 +18,17 @@ const trustBadges = [
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
+    <section
+      className="relative min-h-screen flex items-center overflow-hidden pt-16"
+      style={{
+        background: "linear-gradient(160deg, #0D1117 60%, #0A1F14 100%)",
+      }}
+    >
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="blob-1 absolute w-[600px] h-[600px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(16,185,129,0.07) 0%, transparent 70%)",
             top: "-100px",
             left: "-100px",
           }}
@@ -31,7 +36,7 @@ export default function HeroSection() {
         <div
           className="blob-2 absolute w-[500px] h-[500px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(16,185,129,0.04) 0%, transparent 70%)",
             top: "30%",
             right: "-80px",
           }}
@@ -39,7 +44,7 @@ export default function HeroSection() {
         <div
           className="blob-3 absolute w-[400px] h-[400px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(16,185,129,0.04) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 70%)",
             bottom: "0",
             left: "30%",
           }}
@@ -50,13 +55,21 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <motion.div {...fadeUp(0.1)}>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-sm font-semibold mb-6">
-                <span className="text-blue-500">✦</span> Powered by GPT-4o
+              <span
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
+                style={{
+                  border: "1px solid rgba(16,185,129,0.3)",
+                  background: "rgba(16,185,129,0.08)",
+                  color: "#10B981",
+                }}
+              >
+                <span>✦</span> Powered by GPT-4o
               </span>
             </motion.div>
 
             <motion.h1
-              className="text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-6"
+              className="text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight mb-6"
+              style={{ color: "#E6EDF3" }}
             >
               {["Your Personal", "AI Applies to Jobs", "While You Sleep."].map((line, i) => (
                 <motion.span
@@ -71,7 +84,7 @@ export default function HeroSection() {
                     <>
                       <span
                         style={{
-                          background: "linear-gradient(135deg, #2563eb, #6366f1)",
+                          background: "linear-gradient(135deg, #10B981, #34D399)",
                           WebkitBackgroundClip: "text",
                           WebkitTextFillColor: "transparent",
                           backgroundClip: "text",
@@ -83,18 +96,16 @@ export default function HeroSection() {
                     </>
                   )}
                   {line === "While You Sleep." && (
-                    <>
-                      <span
-                        style={{
-                          background: "linear-gradient(135deg, #2563eb, #6366f1)",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          backgroundClip: "text",
-                        }}
-                      >
-                        While You Sleep.
-                      </span>
-                    </>
+                    <span
+                      style={{
+                        background: "linear-gradient(135deg, #10B981, #34D399)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                      }}
+                    >
+                      While You Sleep.
+                    </span>
                   )}
                 </motion.span>
               ))}
@@ -102,7 +113,8 @@ export default function HeroSection() {
 
             <motion.p
               {...fadeUp(0.55)}
-              className="text-lg text-slate-500 leading-relaxed mb-8 max-w-lg"
+              className="text-lg leading-relaxed mb-8 max-w-lg"
+              style={{ color: "#8B949E" }}
             >
               Applivo runs quietly on your Windows PC — scraping 4 job platforms, scoring every listing with GPT-4o, writing your resume, and auto-submitting applications. Zero cloud. Zero subscription. 100% yours.
             </motion.p>
@@ -114,10 +126,8 @@ export default function HeroSection() {
               <motion.a
                 href="#download"
                 className="shimmer-btn flex items-center gap-2 px-6 py-3.5 rounded-full text-white font-bold text-base shadow-lg"
-                style={{
-                  background: "linear-gradient(135deg, #2563eb, #6366f1)",
-                }}
-                whileHover={{ scale: 1.05 }}
+                style={{ background: "#10B981" }}
+                whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
                 whileTap={{ scale: 0.97 }}
               >
                 <Download className="w-5 h-5" />
@@ -128,8 +138,13 @@ export default function HeroSection() {
                 href="https://github.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-6 py-3.5 rounded-full border-2 border-blue-200 text-blue-600 font-bold text-base bg-white hover:border-blue-400 transition-colors group"
-                whileHover={{ scale: 1.04 }}
+                className="flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-base transition-colors group"
+                style={{
+                  border: "2px solid rgba(33,110,85,0.5)",
+                  color: "#2563eb",
+                  background: "rgba(16,185,129,0.04)",
+                }}
+                whileHover={{ scale: 1.04, borderColor: "rgba(16,185,129,0.6)" }}
                 whileTap={{ scale: 0.97 }}
               >
                 <Github className="w-5 h-5" />
@@ -140,8 +155,8 @@ export default function HeroSection() {
 
             <motion.div {...fadeUp(0.85)} className="flex flex-wrap gap-4">
               {trustBadges.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-1.5 text-slate-500 text-sm">
-                  <Icon className="w-4 h-4 text-blue-500" />
+                <div key={label} className="flex items-center gap-1.5 text-sm" style={{ color: "#6E7681" }}>
+                  <Icon className="w-4 h-4" style={{ color: "#10B981" }} />
                   <span>{label}</span>
                 </div>
               ))}

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Download, Star, Sparkles } from "lucide-react";
+import { Download, Star, Zap } from "lucide-react";
 
 const PARTICLES = Array.from({ length: 16 }, (_, i) => ({
   id: i,
@@ -21,18 +21,20 @@ export default function DownloadCTA() {
       ref={ref}
       className="relative py-28 overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, #1d4ed8, #4f46e5)",
+        background: "linear-gradient(135deg, #0A1F14 0%, #0D2818 50%, #0A1F14 100%)",
+        borderTop: "1px solid rgba(16,185,129,0.15)",
+        borderBottom: "1px solid rgba(16,185,129,0.1)",
       }}
     >
       <div className="absolute inset-0 pointer-events-none">
         {PARTICLES.map((p) => (
           <motion.div
             key={p.id}
-            className={`absolute ${p.size} rounded-full bg-white`}
-            style={{ left: p.left, top: p.top, opacity: 0.3 }}
+            className={`absolute ${p.size} rounded-full`}
+            style={{ left: p.left, top: p.top, background: "#10B981", opacity: 0.2 }}
             animate={{
               y: [0, -60, 0],
-              opacity: [0.2, 0.7, 0.2],
+              opacity: [0.1, 0.4, 0.1],
               rotate: [0, 360],
             }}
             transition={{
@@ -43,6 +45,12 @@ export default function DownloadCTA() {
             }}
           />
         ))}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse at 50% 50%, rgba(16,185,129,0.08) 0%, transparent 70%)",
+          }}
+        />
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -52,17 +60,29 @@ export default function DownloadCTA() {
           transition={{ duration: 0.7 }}
         >
           <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center">
-              <Sparkles className="w-8 h-8 text-white" />
+            <div
+              className="w-16 h-16 rounded-2xl flex items-center justify-center"
+              style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.3)" }}
+            >
+              <Zap className="w-8 h-8" style={{ color: "#10B981" }} />
             </div>
           </div>
 
-          <h2 className="text-4xl lg:text-6xl font-extrabold text-white tracking-tight mb-5 leading-tight">
+          <h2 className="text-4xl lg:text-6xl font-extrabold tracking-tight mb-5 leading-tight" style={{ color: "#E6EDF3" }}>
             Start Automating Your
             <br />
-            Job Search Today
+            <span
+              style={{
+                background: "linear-gradient(135deg, #10B981, #34D399)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Job Search Today
+            </span>
           </h2>
-          <p className="text-xl text-blue-100 mb-10">
+          <p className="text-xl mb-10" style={{ color: "#6EE7B7" }}>
             Free. Open source. Runs entirely on your machine.
           </p>
 
@@ -70,8 +90,12 @@ export default function DownloadCTA() {
             href="https://github.com"
             target="_blank"
             rel="noreferrer"
-            className="shimmer-btn inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white text-blue-700 font-extrabold text-xl shadow-2xl hover:shadow-white/20"
-            whileHover={{ scale: 1.06 }}
+            className="shimmer-btn inline-flex items-center gap-3 px-10 py-5 rounded-full font-extrabold text-xl text-white shadow-2xl"
+            style={{
+              background: "#10B981",
+              boxShadow: "0 0 60px rgba(16,185,129,0.25)",
+            }}
+            whileHover={{ scale: 1.06, filter: "brightness(1.1)" }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
@@ -79,7 +103,7 @@ export default function DownloadCTA() {
             Download Applivo for Windows
           </motion.a>
 
-          <p className="mt-6 text-blue-200 text-sm">
+          <p className="mt-6 text-sm" style={{ color: "#6E7681" }}>
             Windows 10/11 · OpenAI API Key required · ~150MB · Python runtime bundled
           </p>
 
@@ -87,10 +111,11 @@ export default function DownloadCTA() {
             href="https://github.com"
             target="_blank"
             rel="noreferrer"
-            className="mt-6 inline-flex items-center gap-2 text-blue-200 hover:text-white text-sm font-semibold transition-colors group"
-            whileHover={{ scale: 1.03 }}
+            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold transition-colors group"
+            style={{ color: "#8B949E" }}
+            whileHover={{ scale: 1.03, color: "#10B981" }}
           >
-            <Star className="w-4 h-4 group-hover:fill-yellow-300 group-hover:text-yellow-300 transition-colors" />
+            <Star className="w-4 h-4 group-hover:fill-current transition-colors" style={{ color: "#10B981" }} />
             Star on GitHub
           </motion.a>
         </motion.div>
