@@ -1,0 +1,108 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Zap, Menu, X, Download } from "lucide-react";
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { label: "Features", href: "#features" },
+    { label: "How It Works", href: "#how-it-works" },
+    { label: "Why Desktop", href: "#why-desktop" },
+    { label: "FAQ", href: "#faq" },
+  ];
+
+  return (
+    <motion.nav
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled ? "rgba(255,255,255,0.92)" : "transparent",
+        backdropFilter: scrolled ? "blur(16px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(37,99,235,0.08)" : "none",
+        boxShadow: scrolled ? "0 1px 16px rgba(37,99,235,0.06)" : "none",
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <motion.a
+          href="#"
+          className="flex items-center gap-2"
+          whileHover={{ scale: 1.03 }}
+        >
+          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+            <Zap className="w-4 h-4 text-white fill-white" />
+          </div>
+          <span className="text-xl font-bold text-slate-900 tracking-tight">Applivo</span>
+        </motion.a>
+
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <motion.a
+              key={link.label}
+              href={link.href}
+              className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
+              whileHover={{ y: -1 }}
+            >
+              {link.label}
+            </motion.a>
+          ))}
+        </div>
+
+        <div className="hidden md:flex items-center">
+          <motion.a
+            href="#download"
+            className="shimmer-btn flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold shadow-md hover:shadow-lg hover:bg-blue-700 transition-all"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <Download className="w-4 h-4" />
+            Download Free
+          </motion.a>
+        </div>
+
+        <button
+          className="md:hidden p-2 rounded-lg text-slate-600"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white border-t border-slate-100 px-4 pb-4"
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="block py-3 text-sm font-medium text-slate-700 border-b border-slate-50 last:border-0"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#download"
+              className="mt-3 flex items-center justify-center gap-2 py-2.5 rounded-full bg-blue-600 text-white text-sm font-semibold"
+              onClick={() => setMobileOpen(false)}
+            >
+              <Download className="w-4 h-4" /> Download Free
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
+  );
+}

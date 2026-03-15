@@ -1,0 +1,346 @@
+Build a stunning, animated, highly interactive landing page for "Applivo" 
+— an AI-powered job application automation desktop app for Windows.
+
+Applivo runs as a local .exe file. It scrapes LinkedIn, Indeed, Internshala 
+& Wellfound, scores jobs with GPT-4o AI, auto-generates tailored resumes 
+& cover letters, and submits applications via Playwright browser automation 
+— all running silently on the user's own PC.
+
+═══════════════════════════════════════════
+🎨 DESIGN SYSTEM — LIGHT THEME
+═══════════════════════════════════════════
+
+Background: Pure white (#ffffff) with soft grey sections (#f8fafc)
+Primary color: Vivid blue (#2563eb)
+Secondary: Indigo-violet (#6366f1)
+Accent: Emerald green (#10b981) for success states
+Gradient: Blue → Indigo (used on CTAs, headings, highlights)
+Text: Near-black (#0f172a) for headings, (#475569) for body
+Cards: White with soft shadow + blue border on hover
+  box-shadow: 0 4px 24px rgba(37,99,235,0.08)
+Border radius: 16px on cards, 999px on buttons
+Font: Inter — clean, modern, professional
+Icons: Lucide React icons throughout
+
+ANIMATIONS (Framer Motion — all required):
+- Hero elements: staggered fade-up on load (title → subtitle → buttons → terminal)
+- Scroll-triggered: every section fades + slides up when entering viewport
+- Stats: animated count-up from 0 when scrolled into view
+- Cards: lift + blue glow on hover (translateY -6px + shadow)
+- Buttons: scale pulse on hover + ripple click effect
+- Terminal: real typewriter effect cycling through log lines
+- How It Works: step connector line draws/fills as user scrolls
+- FAQ: smooth spring accordion open/close
+- Navbar: frosted glass blur appears on scroll (transparent → white/blur)
+- Floating background: subtle animated gradient blobs (very light blue/indigo, 
+  low opacity 0.06) slowly drifting behind hero — NOT distracting
+
+═══════════════════════════════════════════
+📄 SECTIONS
+═══════════════════════════════════════════
+
+──────────────────────────────────────────
+1. NAVBAR
+──────────────────────────────────────────
+Sticky. On scroll: background transitions to white with blur + 
+soft bottom border.
+
+Left: Lightning bolt icon (blue) + "Applivo" in bold dark text
+Center: Features · How It Works · Why Desktop · FAQ
+Right: "⬇ Download Free" — solid blue pill button with white text,
+       subtle shadow, scale on hover
+
+──────────────────────────────────────────
+2. HERO
+──────────────────────────────────────────
+Full viewport height. Centered layout with content left, 
+terminal mockup right.
+
+Badge (animated fade-in first):
+  Pill badge: ✦ Powered by GPT-4o — blue outline, blue text
+
+Headline (staggered word-by-word animation, gradient on key words):
+  "Your Personal AI
+   Applies to Jobs
+   While You Sleep."
+
+Key words "AI" and "While You Sleep" use blue→indigo gradient text.
+
+Subheadline:
+  "Applivo runs quietly on your Windows PC — scraping 4 job 
+   platforms, scoring every listing with GPT-4o, writing your 
+   resume, and auto-submitting applications. Zero cloud. 
+   Zero subscription. 100% yours."
+
+Two CTA buttons (stagger in after subtitle):
+  Primary: "⬇ Download for Windows — Free"
+    Blue gradient background, white text, rounded-full,
+    animated shimmer sweep effect on hover
+  Secondary: "View on GitHub →"
+    White bg, blue border, blue text, arrow animates right on hover
+
+Trust badges (fade in last, horizontal row):
+  🔒 AES-256 Encrypted  ⚡ GPT-4o Powered  
+  🖥 Runs Locally  🌍 Open Source  📬 Auto-Applies
+
+RIGHT SIDE — Interactive Terminal Card:
+  White card, soft shadow, rounded-2xl
+  Top bar: three colored dots (red/yellow/green) + 
+           "applivo — agent running" title
+  
+  Animated log lines (typewriter, cycling every 4s):
+    Line 1 (blue):   [06:00] 🔍 Scraping LinkedIn... 52 jobs found
+    Line 2 (slate):  [06:01] 🔍 Scraping Indeed... 38 jobs found  
+    Line 3 (indigo): [06:02] 🤖 AI Scoring batch... GPT-4o-mini
+    Line 4 (green):  [06:03] ✓ Match 94% — ML Engineer @ Stripe
+    Line 5 (green):  [06:03] ✓ Match 89% — AI Engineer @ Notion
+    Line 6 (blue):   [06:04] 📄 Generating tailored resume...
+    Line 7 (blue):   [06:05] ✍️  Writing cover letter...
+    Line 8 (emerald, bold): [06:06] 🚀 Applied! — Stripe ML Engineer
+    Then loops with a blinking cursor ▋
+
+──────────────────────────────────────────
+3. SOCIAL PROOF BAR
+──────────────────────────────────────────
+Light grey (#f1f5f9) full-width strip.
+4 animated count-up stats, separated by vertical dividers:
+
+  4     →  Job Platforms
+  94%   →  Avg Match Score Accuracy  
+  14    →  Application Lifecycle Stages
+  100%  →  Runs On Your Machine
+
+Each number animates from 0 to its value on scroll into view.
+Numbers in bold blue, labels in slate grey.
+
+──────────────────────────────────────────
+4. HOW IT WORKS
+──────────────────────────────────────────
+White background section.
+Title: "Set It Once. Let It Run."
+Subtitle: "Install Applivo, configure your profile, and your 
+           personal AI agent handles the rest — automatically."
+
+3 steps in a horizontal row connected by an animated 
+dashed line that DRAWS ITSELF left to right as user scrolls 
+into the section (SVG stroke-dashoffset animation).
+
+Each step card: white, rounded-2xl, shadow, blue top border,
+lifts on hover.
+
+Step 1 — Icon: Download (blue circle bg)
+  "Download & Configure"
+  "Install the .exe. Enter your OpenAI API key, LinkedIn 
+   credentials, and target job roles. Takes under 5 minutes."
+
+Step 2 — Icon: Brain/Sparkles (indigo circle bg)
+  "AI Discovers & Scores Jobs"
+  "Every 6 hours, Applivo scrapes 4 platforms and runs a 
+   dual GPT-4o pipeline — filtering hundreds of listings 
+   down to only your best matches."
+
+Step 3 — Icon: Rocket (emerald circle bg)
+  "Applies While You Sleep"
+  "Playwright browser automation fills forms, uploads your 
+   tailored resume, and submits. You get a Telegram ping 
+   for every application sent."
+
+──────────────────────────────────────────
+5. LIVE DEMO — INTERACTIVE JOB CARD SLIDER
+──────────────────────────────────────────
+Title: "See What Applivo Finds For You"
+Subtitle: "Sample jobs discovered and scored by the AI agent"
+
+Horizontal scrollable row of 5 interactive job cards.
+Each card: white, rounded-2xl, subtle shadow, hover lifts.
+
+Card layout:
+  Top: Company logo placeholder (colored initial avatar) + 
+       company name + "Easy Apply" or "Applied ✓" badge
+  Middle: Job title (bold) + location tag + remote/onsite badge
+  Score bar: "AI Match Score" label + animated progress bar 
+             (fills on card hover) + score % in blue bold
+  Bottom: 3 skill tags (blue pills) + 
+          "View Details →" ghost button
+
+Sample cards:
+  Card 1: Stripe · ML Engineer · Remote · 94% match
+    Skills: Python, PyTorch, MLOps
+  Card 2: Notion · AI Engineer · San Francisco · 89% match
+    Skills: LLMs, LangChain, FastAPI
+  Card 3: Vercel · Backend Engineer · Remote · 85% match
+    Skills: FastAPI, PostgreSQL, Redis
+  Card 4: Linear · Computer Vision · Berlin · 81% match
+    Skills: OpenCV, YOLO, Python
+  Card 5: Figma · Data Scientist · Remote · 78% match
+    Skills: PyTorch, ChromaDB, SQL
+
+The progress bar on each card animates (0 → match%) when 
+that card scrolls into view or is hovered.
+
+──────────────────────────────────────────
+6. FEATURES GRID
+──────────────────────────────────────────
+Light grey (#f8fafc) background.
+Title: "Everything Your Job Search Needs"
+Subtitle: "One tool. Fully automated. Entirely local."
+
+2×3 grid of glassmorphism-lite cards 
+(white bg, 1px blue border, blue glow shadow on hover):
+
+Card 1 — 🔍 Multi-Platform Scraping
+  "LinkedIn, Indeed, Internshala & Wellfound — scraped 
+   simultaneously every 6 hours with polite rate limiting 
+   and automatic deduplication."
+
+Card 2 — 🤖 Dual GPT-4o Pipeline
+  "GPT-4o-mini filters at scale. GPT-4o goes deep — 
+   extracting ATS keywords, skill gaps, match scores, 
+   and seniority signals for every job."
+
+Card 3 — 📄 ATS Resume Tailoring
+  "Your resume is rewritten per job. Keywords injected, 
+   bullet points tuned, ATS score estimated. 
+   Rendered to PDF via WeasyPrint."
+
+Card 4 — ✍️ Cover Letter Generation
+  "Company-specific cover letters crafted by GPT-4o — 
+   with role alignment, company context, 
+   and configurable tone."
+
+Card 5 — 🛡️ Human-in-the-Loop
+  "Auto-apply is off by default. Enable with a Telegram 
+   approval gate — every application needs your 
+   thumbs up before it's sent."
+
+Card 6 — 🎤 Interview Prep Engine
+  "Company intelligence report, GPT-4o question bank, 
+   and mock AI interviews with scores on technical 
+   depth, communication & confidence."
+
+Each card: icon in colored circle (blue/indigo/emerald alternating),
+bold title, body text. On hover: card lifts, left border turns 
+solid blue, icon circle pulses once.
+
+──────────────────────────────────────────
+7. WHY DESKTOP — SPLIT COMPARISON
+──────────────────────────────────────────
+White background. Two columns side by side.
+
+Title: "Why a Desktop App, Not a Cloud Service?"
+
+LEFT column — "☁ Cloud Hosted" — light red tint background card:
+  Header: red badge "Doesn't Work"
+  ✗ LinkedIn & Indeed block cloud server IPs
+  ✗ Playwright can't run in serverless containers
+  ✗ Background Celery workers killed on free tiers
+  ✗ Your credentials stored on a stranger's server
+  ✗ Monthly subscription fees
+
+RIGHT column — "🖥 Applivo Desktop" — light blue tint card:
+  Header: green badge "Works Perfectly"
+  ✓ Runs from your home IP — never flagged
+  ✓ Full Playwright browser automation, locally
+  ✓ Celery workers run 24/7 on your machine
+  ✓ All data encrypted and stored only on your PC
+  ✓ Completely free forever
+
+On scroll into view: left card slides in from left, 
+right card slides in from right. 
+Right card has a subtle blue glow border.
+
+──────────────────────────────────────────
+8. DOWNLOAD CTA SECTION
+──────────────────────────────────────────
+Blue → Indigo gradient background (the only dark section).
+White text throughout.
+
+Title: "Start Automating Your Job Search Today"
+Subtitle: "Free. Open source. Runs entirely on your machine."
+
+Giant download button:
+  "⬇ Download Applivo for Windows"
+  White background, blue text, rounded-full, large padding.
+  On hover: scale up + shimmer sweep animation.
+
+Below button — system requirements in small white/80 text:
+  "Windows 10/11 · OpenAI API Key required · ~150MB · 
+   Python runtime bundled"
+
+Secondary ghost link: "⭐ Star on GitHub"
+
+Floating decoration: subtle white sparkle/star particles 
+animating slowly around the section (Framer Motion, 
+low opacity, non-distracting).
+
+──────────────────────────────────────────
+9. FAQ
+──────────────────────────────────────────
+White background.
+Title: "Frequently Asked Questions"
+
+Accordion style — smooth spring animation on open/close.
+Only one open at a time. Open item: blue left border + 
+blue question text + chevron rotates 180°.
+
+Q1: Is Applivo completely free?
+A: Yes — free and open source under MIT License. You only 
+   pay for your own OpenAI API usage (typically $2–5/month 
+   for active job searching).
+
+Q2: Do I need coding knowledge?
+A: None at all. Download the .exe, fill in the setup form 
+   with your API key and preferences, and click Start Agent.
+
+Q3: Is it safe to enter my LinkedIn password?
+A: Yes. Credentials are encrypted with AES-256-GCM using 
+   a locally-derived key and stored only on your machine. 
+   Nothing is sent to any server except LinkedIn/Indeed 
+   and OpenAI directly.
+
+Q4: Will LinkedIn detect and block me?
+A: Applivo uses randomised delays, realistic browser 
+   headers, and Playwright — mimicking real human browsing. 
+   Running from your home IP makes detection very unlikely.
+
+Q5: Can I control which jobs it applies to?
+A: Yes. Set a minimum match score (e.g. 80%), a daily 
+   application limit, and optionally require Telegram 
+   approval before every single submission.
+
+Q6: What job platforms does it support?
+A: LinkedIn, Indeed, Internshala, and Wellfound — with 
+   Glassdoor support coming soon.
+
+──────────────────────────────────────────
+10. FOOTER
+──────────────────────────────────────────
+Light grey background (#f8fafc). 
+
+Left: Applivo logo + tagline 
+      "Your AI career agent, running locally."
+Center: Links — GitHub · Docs · MIT License · Changelog
+Right: "Built with ♥ by Sudharsan Selvaraj"
+
+Bottom strip (border-top):
+  "© 2025 Applivo · Not affiliated with LinkedIn, Indeed, 
+   Internshala, or Wellfound."
+
+═══════════════════════════════════════════
+⚙️ TECHNICAL REQUIREMENTS
+═══════════════════════════════════════════
+
+Framework: React + TailwindCSS
+Animations: Framer Motion (required — use useInView, 
+            motion.div, AnimatePresence throughout)
+Icons: Lucide React
+No placeholder lorem ipsum — use all real copy above
+All download buttons use <a href="#download"> so the 
+real .exe URL can be swapped in easily
+SVG path animation for the step connector line
+Typewriter hook for terminal log cycling
+useCountUp hook for stats animation
+The interactive job cards slider should be 
+mouse-draggable on desktop (use a drag scroll library 
+or Framer Motion drag)
+Smooth scroll behavior on all anchor links
