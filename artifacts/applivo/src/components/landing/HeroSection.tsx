@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
 import { Download, Github, Lock, Zap, Monitor, Globe, Mail } from "lucide-react";
-import Terminal from "./Terminal";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay, ease: "easeOut" },
+  transition: { duration: 0.6, delay },
 });
 
 const trustBadges = [
@@ -28,95 +27,50 @@ export default function HeroSection() {
         <div
           className="blob-1 absolute w-[600px] h-[600px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(16,185,129,0.07) 0%, transparent 70%)",
-            top: "-100px",
-            left: "-100px",
+            background: "radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%)",
+            top: "-200px",
+            right: "-100px",
           }}
         />
         <div
           className="blob-2 absolute w-[500px] h-[500px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(16,185,129,0.04) 0%, transparent 70%)",
-            top: "30%",
-            right: "-80px",
-          }}
-        />
-        <div
-          className="blob-3 absolute w-[400px] h-[400px] rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 70%)",
-            bottom: "0",
-            left: "30%",
+            background: "radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)",
+            bottom: "-150px",
+            left: "-100px",
           }}
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div>
-            <motion.div {...fadeUp(0.1)}>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div {...fadeUp(0.1)}>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ background: "rgba(16,185,129,0.1)", color: "#10B981", border: "1px solid rgba(16,185,129,0.2)" }}>
+              <Zap className="w-4 h-4" />
+              AI-Powered Job Automation
+            </div>
+
+            <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-6" style={{ color: "#E6EDF3" }}>
+              Apply to 100+
+              <br />
               <span
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
                 style={{
-                  border: "1px solid rgba(16,185,129,0.3)",
-                  background: "rgba(16,185,129,0.08)",
-                  color: "#10B981",
+                  background: "linear-gradient(135deg, #10B981, #34D399)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
                 }}
               >
-                <span>✦</span> Powered by GPT-4o
+                Jobs Daily
               </span>
-            </motion.div>
-
-            <motion.h1
-              className="text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight mb-6"
-              style={{ color: "#E6EDF3" }}
-            >
-              {["Your Personal", "AI Applies to Jobs", "While You Sleep."].map((line, i) => (
-                <motion.span
-                  key={i}
-                  className="block"
-                  initial={{ opacity: 0, y: 28 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + i * 0.12, duration: 0.6, ease: "easeOut" }}
-                >
-                  {line === "Your Personal" && line}
-                  {line === "AI Applies to Jobs" && (
-                    <>
-                      <span
-                        style={{
-                          background: "linear-gradient(135deg, #10B981, #34D399)",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          backgroundClip: "text",
-                        }}
-                      >
-                        AI
-                      </span>{" "}
-                      Applies to Jobs
-                    </>
-                  )}
-                  {line === "While You Sleep." && (
-                    <span
-                      style={{
-                        background: "linear-gradient(135deg, #10B981, #34D399)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
-                      }}
-                    >
-                      While You Sleep.
-                    </span>
-                  )}
-                </motion.span>
-              ))}
-            </motion.h1>
+            </h1>
 
             <motion.p
-              {...fadeUp(0.55)}
-              className="text-lg leading-relaxed mb-8 max-w-lg"
+              {...fadeUp(0.2)}
+              className="text-xl mb-8 max-w-lg"
               style={{ color: "#8B949E" }}
             >
-              Applivo runs quietly on your Windows PC — scraping 4 job platforms, scoring every listing with GPT-4o, writing your resume, and auto-submitting applications. Zero cloud. Zero subscription. 100% yours.
+              Stop manually applying to jobs. Let Applivo automatically find, tailor, and apply to relevant positions across all platforms — while you focus on interviews.
             </motion.p>
 
             <motion.div
@@ -124,14 +78,14 @@ export default function HeroSection() {
               className="flex flex-wrap gap-4 mb-10"
             >
               <motion.a
-                href="#download"
-                className="shimmer-btn flex items-center gap-2 px-6 py-3.5 rounded-full text-white font-bold text-base shadow-lg"
+                href="/pricing"
+                className="shimmer-btn flex items-center gap-2 px-6 py-3.5 rounded-full text-white font-bold text-base shadow-lg cursor-pointer"
                 style={{ background: "#10B981" }}
                 whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
                 whileTap={{ scale: 0.97 }}
               >
                 <Download className="w-5 h-5" />
-                Download for Windows — Free
+                Get Started — Just ₹99
               </motion.a>
 
               <motion.a
@@ -161,13 +115,67 @@ export default function HeroSection() {
                 </div>
               ))}
             </motion.div>
-          </div>
+          </motion.div>
 
-          <div className="lg:block">
+          <motion.div {...fadeUp(0.4)} className="hidden lg:block">
             <Terminal />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
+  );
+}
+
+function Terminal() {
+  return (
+    <div
+      className="rounded-2xl overflow-hidden shadow-2xl"
+      style={{
+        background: "#161B22",
+        border: "1px solid #30363d",
+        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+      }}
+    >
+      <div
+        className="flex items-center gap-2 px-4 py-3"
+        style={{ background: "#21262d", borderBottom: "1px solid #30363d" }}
+      >
+        <div className="w-3 h-3 rounded-full" style={{ background: "#f85149" }} />
+        <div className="w-3 h-3 rounded-full" style={{ background: "#f0883e" }} />
+        <div className="w-3 h-3 rounded-full" style={{ background: "#3fb950" }} />
+        <span className="ml-2 text-sm" style={{ color: "#8b949e" }}>
+          applivo — powered by GPT-4o
+        </span>
+      </div>
+      <div className="p-6 font-mono text-sm">
+        <div className="mb-4" style={{ color: "#8b949e" }}>
+          <span style={{ color: "#10B981" }}>applivo</span>:<span style={{ color: "#79c0ff" }}>~</span>$
+          <span className="ml-2" style={{ color: "#e6edf3" }}>applivo search "react developer" --location=remote</span>
+        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="space-y-2"
+          style={{ color: "#7ee787" }}
+        >
+          <div>✓ Searching across 12 platforms...</div>
+          <div>✓ Found 247 matching jobs</div>
+          <div>✓ Filtering by criteria...</div>
+          <div>✓ 89 jobs match your profile</div>
+          <div>✓ Tailoring resumes...</div>
+          <div>✓ Applying to top 50 jobs...</div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2 }}
+          className="mt-4"
+          style={{ color: "#79c0ff" }}
+        >
+          🎉 Successfully applied to 23 jobs today!
+        </motion.div>
+      </div>
+    </div>
   );
 }

@@ -83,14 +83,12 @@ export default function DownloadCTA() {
             </span>
           </h2>
           <p className="text-xl mb-10" style={{ color: "#6EE7B7" }}>
-            Free. Open source. Runs entirely on your machine.
+            One-time payment. Lifetime access. Runs entirely on your machine.
           </p>
 
           <motion.a
-            href="https://github.com"
-            target="_blank"
-            rel="noreferrer"
-            className="shimmer-btn inline-flex items-center gap-3 px-10 py-5 rounded-full font-extrabold text-xl text-white shadow-2xl"
+            href="/pricing"
+            className="shimmer-btn inline-flex items-center gap-3 px-10 py-5 rounded-full font-extrabold text-xl text-white shadow-2xl cursor-pointer"
             style={{
               background: "#10B981",
               boxShadow: "0 0 60px rgba(16,185,129,0.25)",
@@ -100,7 +98,7 @@ export default function DownloadCTA() {
             transition={{ type: "spring", stiffness: 400 }}
           >
             <Download className="w-6 h-6" />
-            Download Applivo for Windows
+            Get Started - Just ₹99
           </motion.a>
 
           <p className="mt-6 text-sm" style={{ color: "#6E7681" }}>
