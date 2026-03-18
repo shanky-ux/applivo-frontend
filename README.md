@@ -36,7 +36,7 @@ A modern monorepo containing Applivo - an AI-powered job application automation 
 npm install -g pnpm
 
 # Install dependencies
-pnpm instal
+pnpm install
 ```
 
 ## 🏃‍♂️ Running Locally
