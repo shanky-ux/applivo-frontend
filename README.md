@@ -7,7 +7,7 @@ A modern monorepo containing Applivo - an AI-powered job application automation 
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![Vite](https://img.shields.io/badge/Vite-5-purple)
 
-## 🚀 Feature
+## 🚀 Features
 
 ### Applivo - AI Job Application Automation
 - **GPT-4o Powered**: Intelligent job matching and application generation
