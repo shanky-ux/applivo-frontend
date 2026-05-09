@@ -1,5 +1,7 @@
 # Animated-Assets
 Testing YOLO badge
+YOLO badge test
+
 A modern monorepo containing Applivo - an AI-powered job application automation platform, along with supporting services.
 
 ![Applivo](https://img.shields.io/badge/Applivo-AI%20Job%20Automation-green)
